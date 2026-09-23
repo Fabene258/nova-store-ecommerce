@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nova Store — loja online demonstrativa criada para portfólio." />
+  <title>Nova Store | Tecnologia para o dia a dia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="announcement">
+    <span>Entrega grátis em compras acima de 4.000 MT</span>
+    <span class="announcement-hide">Pagamento seguro · Suporte 7 dias</span>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="Nova Store">
+        <span class="brand-mark">N</span>
+        <span>NOVA<span>STORE</span></span>
+      </a>
+
+      <nav class="desktop-nav">
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#vantagens">Vantagens</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="language-switch" role="group" aria-label="Idioma / Language">
+          <button class="lang-btn active" type="button" data-lang="pt">PT</button>
+          <button class="lang-btn" type="button" data-lang="en">EN</button>
+        </div>
+        <button class="icon-btn" id="searchToggle" aria-label="Pesquisar">
+          <span>⌕</span>
+        </button>
+        <button class="cart-btn" id="openCart" aria-label="Abrir carrinho">
+          <span class="cart-icon">🛒</span>
+          <span>Carrinho</span>
+          <strong id="cartCount">0</strong>
+        </button>
+        <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#vantagens">Vantagens</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+
+    <div class="search-panel" id="searchPanel">
+      <div class="container search-panel-inner">
+        <input id="globalSearch" type="search" placeholder="Pesquisar smartphones, áudio, acessórios..." />
+        <button id="closeSearch">Fechar</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">TECNOLOGIA SEM COMPLICAÇÕES</span>
+          <h1>O teu próximo upgrade começa aqui.</h1>
+          <p>
+            Smartphones, áudio e acessórios escolhidos para quem procura design,
+            desempenho e preço claro.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#produtos">Comprar agora</a>
+            <a class="btn btn-secondary" href="#destaque">Ver destaque</a>
+          </div>
+
+          <div class="hero-stats">
+            <div>
+              <strong>24h</strong>
+              <span>Processamento</span>
+            </div>
+            <div>
+              <strong>30 dias</strong>
+              <span>Troca facilitada</span>
+            </div>
+            <div>
+              <strong>4.8/5</strong>
+              <span>Avaliação média</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="glow glow-one"></div>
+          <div class="glow glow-two"></div>
+          <div class="device-card device-main">
+            <div class="phone-screen">
+              <span class="camera"></span>
+              <div class="screen-shape one"></div>
+              <div class="screen-shape two"></div>
+              <div class="screen-title">NOVA</div>
+            </div>
+          </div>
+          <div class="floating-card price-card">
+            <span>Oferta da semana</span>
+            <strong>25.990 MT</strong>
+          </div>
+          <div class="floating-card shipping-card">
+            <span>⚡</span>
+            <div>
+              <strong>Envio rápido</strong>
+              <small>Maputo e Matola</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <span>✓ Pagamento seguro</span>
+        <span>✓ Produtos selecionados</span>
+        <span>✓ Atendimento rápido</span>
+        <span>✓ Compra simples</span>
+      </div>
+    </section>
+
+    <section class="section" id="produtos">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">CATÁLOGO</span>
+            <h2>Produtos em destaque</h2>
+          </div>
+          <p>Explora o catálogo e adiciona os teus favoritos ao carrinho.</p>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="categories" id="categoryButtons">
+            <button class="category-btn active" data-category="all">Todos</button>
+            <button class="category-btn" data-category="smartphones">Smartphones</button>
+            <button class="category-btn" data-category="audio">Áudio</button>
+            <button class="category-btn" data-category="accessories">Acessórios</button>
+          </div>
+          <select id="sortSelect" aria-label="Ordenar produtos">
+            <option value="featured">Ordenar: Destaques</option>
+            <option value="price-low">Preço: menor</option>
+            <option value="price-high">Preço: maior</option>
+            <option value="name">Nome: A–Z</option>
+          </select>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+        <div class="empty-state hidden" id="emptyState">
+          <h3>Nenhum produto encontrado</h3>
+          <p>Tenta pesquisar por outro nome ou categoria.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section featured-section" id="destaque">
+      <div class="container featured-grid">
+        <div class="featured-art">
+          <div class="headphone-band"></div>
+          <div class="earcup left"></div>
+          <div class="earcup right"></div>
+          <div class="sound-wave wave1"></div>
+          <div class="sound-wave wave2"></div>
+          <div class="sound-wave wave3"></div>
+        </div>
+        <div class="featured-copy">
+          <span class="eyebrow">PRODUTO DA SEMANA</span>
+          <h2>Nova Air Pro</h2>
+          <p>
+            Auscultadores sem fios com cancelamento de ruído, até 32 horas de
+            autonomia e carregamento USB-C.
+          </p>
+          <ul>
+            <li>Cancelamento ativo de ruído</li>
+            <li>Bluetooth 5.3</li>
+            <li>Microfone duplo</li>
+          </ul>
+          <div class="featured-price">
+            <strong>6.490 MT</strong>
+            <span>7.290 MT</span>
+          </div>
+          <button class="btn btn-primary" data-featured-add="p4">Adicionar ao carrinho</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section benefits" id="vantagens">
+      <div class="container">
+        <div class="section-heading compact">
+          <div>
+            <span class="eyebrow">PORQUÊ A NOVA STORE</span>
+            <h2>Uma compra sem etapas desnecessárias.</h2>
+          </div>
+        </div>
+
+        <div class="benefit-grid">
+          <article>
+            <span class="benefit-icon">🔒</span>
+            <h3>Pagamento seguro</h3>
+            <p>Checkout demonstrativo preparado para futura integração com meios de pagamento reais.</p>
+          </article>
+          <article>
+            <span class="benefit-icon">🚚</span>
+            <h3>Entrega organizada</h3>
+            <p>Estrutura pronta para cálculo de envio, morada e acompanhamento de pedidos.</p>
+          </article>
+          <article>
+            <span class="benefit-icon">💬</span>
+            <h3>Atendimento</h3>
+            <p>Área de contacto pensada para integração com WhatsApp, e-mail ou suporte próprio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container newsletter-card">
+        <div>
+          <span class="eyebrow">NOVIDADES</span>
+          <h2>Recebe ofertas e novos produtos.</h2>
+        </div>
+        <form id="newsletterForm">
+          <input type="email" id="newsletterEmail" placeholder="teuemail@exemplo.com" required />
+          <button class="btn btn-primary" type="submit">Subscrever</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="#inicio">
+          <span class="brand-mark">N</span>
+          <span>NOVA<span>STORE</span></span>
+        </a>
+        <p>Projecto demonstrativo de e-commerce criado para portfólio.</p>
+      </div>
+      <div>
+        <h4>Loja</h4>
+        <a href="#produtos">Produtos</a>
+        <a href="#destaque">Destaques</a>
+        <a href="#vantagens">Como funciona</a>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <a href="mailto:hello@novastore.demo">hello@novastore.demo</a>
+        <span>Maputo, Moçambique</span>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Nova Store</span>
+      <span>Demo de portfólio · Sem pagamentos reais</span>
+    </div>
+  </footer>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <div>
+        <span class="eyebrow">TEU CARRINHO</span>
+        <h2>Compras</h2>
+      </div>
+      <button class="close-btn" id="closeCart" aria-label="Fechar carrinho">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-empty" id="cartEmpty">
+      <span>🛒</span>
+      <h3>O carrinho está vazio</h3>
+      <p>Adiciona um produto para começar.</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">0 MT</strong>
+      </div>
+      <button class="btn btn-primary btn-full" id="checkoutBtn">Finalizar compra</button>
+      <small>Checkout demonstrativo. Nenhum pagamento será processado.</small>
+    </div>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="modal-card product-modal-card">
+      <button class="close-btn modal-close" data-close-modal="productModal">×</button>
+      <div id="productModalContent"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-card checkout-card">
+      <button class="close-btn modal-close" data-close-modal="checkoutModal">×</button>
+      <span class="eyebrow">CHECKOUT DEMO</span>
+      <h2>Finalizar compra</h2>
+      <form id="checkoutForm">
+        <div class="form-grid">
+          <label>
+            Nome completo
+            <input type="text" required placeholder="Francisco Bene" />
+          </label>
+          <label>
+            Telefone
+            <input type="tel" required placeholder="+258 84 000 0000" />
+          </label>
+        </div>
+        <label>
+          E-mail
+          <input type="email" required placeholder="nome@email.com" />
+        </label>
+        <label>
+          Morada
+          <input type="text" required placeholder="Bairro, rua, casa..." />
+        </label>
+        <div class="form-grid">
+          <label>
+            Cidade
+            <input type="text" required placeholder="Maputo" />
+          </label>
+          <label>
+            Método
+            <select required>
+              <option>M-Pesa</option>
+              <option>e-Mola</option>
+              <option>Cartão</option>
+              <option>Pagamento na entrega</option>
+            </select>
+          </label>
+        </div>
+        <div class="checkout-summary">
+          <span>Total do pedido</span>
+          <strong id="checkoutTotal">0 MT</strong>
+        </div>
+        <button class="btn btn-primary btn-full" type="submit">Confirmar pedido demonstrativo</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>
